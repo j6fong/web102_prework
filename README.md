@@ -23,7 +23,7 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented features:
 
-<img src='https://photos.app.goo.gl/hZGY8t143nZMX34H6' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='assets/WEB102_Prework.gif' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with Apple Shortcuts
