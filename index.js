@@ -105,7 +105,7 @@ function filterFundedOnly() {
     // use filter() to get a list of games that have met or exceeded their goal
     let goal = GAMES_JSON.filter((game) => game.pledged >= game.goal);
 
-    // use the function we previously created to add unfunded games to the DOM
+    // use the function we previously created to add funded games to the DOM
     addGamesToPage(goal);
 }
 
@@ -136,12 +136,17 @@ allBtn.addEventListener("click", showAllGames);
 const descriptionContainer = document.getElementById("description-container");
 
 // use filter or reduce to count the number of unfunded games
-
+let numUnfundedGames = GAMES_JSON.filter((game) => game.pledged < game.goal).length;
 
 // create a string that explains the number of unfunded games using the ternary operator
-
+const displayStr =  
+    `A total of $${totalRaised.toLocaleString('en-US')} has been raised for ${GAMES_JSON.length} games. Currently, ${numUnfundedGames}
+    ${numUnfundedGames > 1? ' games remain': ' game remains'} unfunded. We need your help to fund these amazing games!`;
 
 // create a new DOM element containing the template string and append it to the description container
+let description = document.createElement('p');
+description.innerHTML = displayStr;
+descriptionContainer.appendChild(description);
 
 /************************************************************************************
  * Challenge 7: Select & display the top 2 games
@@ -156,7 +161,14 @@ const sortedGames =  GAMES_JSON.sort( (item1, item2) => {
 });
 
 // use destructuring and the spread operator to grab the first and second games
+let [firstGame, secondGame, ...games] = sortedGames;
 
 // create a new element to hold the name of the top pledge game, then append it to the correct element
+let topGame = document.createElement('p');
+topGame.innerHTML = firstGame.name;
+firstGameContainer.appendChild(topGame);
 
 // do the same for the runner up item
+let runnerUpGame = document.createElement('p');
+runnerUpGame.innerHTML = secondGame.name;
+secondGameContainer.appendChild(runnerUpGame);
